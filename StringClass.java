@@ -2,7 +2,9 @@ package homework.homeworkStroki;
 
 import java.util.Scanner;
 
-public class StringClass {   // не понял как сделать именно метод String toString(int number) в одном классе
+public class StringClass {
+
+    //не понял как сделать именно метод String toString(int number), получился просто void string()
 
     static int a = 15020010;
     static String result = "";
@@ -18,7 +20,7 @@ public class StringClass {   // не понял как сделать именн
         a = Math.abs(a);
         string();
         System.out.println();
-        Week(155);
+
     }
 
     public static void string() {
@@ -253,20 +255,6 @@ public class StringClass {   // не понял как сделать именн
         System.out.print(result);
     }
 
-    public static void Week(int day) {
-        int a = day / 7;
-        if (a % 10 == 1) {
-            System.out.print(a + " неделя");
-        }
-        if ((a % 10 == 2 || a % 10 == 3 || a % 10 == 4) && !(a % 100 > 10 && a % 100 < 20)) {
-            System.out.print(a + " недели");
-        }
-        if (a == 0) {
-            System.out.print("ноль недель");
-        } else if (a % 10 == 0 || a % 10 > 4 || (a % 100 > 10 && a % 100 < 20)) {
-            System.out.print(a + " недель ");
-        }
 
-    }
 
 }
