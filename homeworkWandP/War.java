@@ -8,34 +8,37 @@ import java.nio.file.Paths;
 import java.util.*;
 
 public class War {
-//сделано только первых 3 пункта
+    //сделано только первых 3 пункта
     public static void main(String[] args) {
 
         String filePath = ("C:\\Users\\Рома\\Downloads/Война и мир_книга.txt");
         String text0 = readAllBytesJava7(filePath);
         String text = text0.replaceAll("[^А-я]", " ");
         String[] arrStr = text.split(" ");
-        //System.out.println(Arrays.toString(arrStr));
-        //System.out.println(putInHashSet(arrStr));
-        //System.out.println(sortByValue(putInHashMap(arrStr)));
 
         HashMap<String, Integer> hm = new HashMap<String, Integer>();
         hm = putInHashMap(arrStr);
         hm = sortByValue(hm);
-        for (Map.Entry<String, Integer> entry : hm.entrySet()){
+        for (Map.Entry<String, Integer> entry : hm.entrySet()) {
             String key = entry.getKey();
             Integer value = entry.getValue();
             System.out.println(key + " - " + value + " раз");
         }
 
+                //long search(String text, String word)
+        EasySearch easySearch=new EasySearch();
+        System.out.println(easySearch.search(text,"Пьер"));
 
-
+            //Вывести информацию как часто встречаются слова "война", "и" (как союз), "мир" вне зависимости от регистра.
+        System.out.println(easySearch.search(text,"война"));
+        System.out.println(easySearch.search(text,"и"));
+        System.out.println(easySearch.search(text,"мир"));
     }
 
-             //сортировка
+    //сортировка
     public static HashMap<String, Integer> sortByValue(HashMap<String, Integer> hm) {    // скопировал
         // Create a list from elements of HashMap
-        List<Map.Entry<String, Integer>> list =new LinkedList<>(hm.entrySet());
+        List<Map.Entry<String, Integer>> list = new LinkedList<>(hm.entrySet());
 
         // Sort the list
         Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {             //??
@@ -65,14 +68,13 @@ public class War {
 
     //найти топ 10 слов и вывести количество этих слов используя Map
     public static HashMap putInHashMap(String[] arrStr) {
-        int count = 0;
         HashMap map = new HashMap();
         for (int i = 0; i < arrStr.length; i++) {
-            map.put(arrStr[i],0);
+            map.put(arrStr[i], 0);
         }
-        for (int i = 0; i <arrStr.length ; i++) {
-            if(map.containsKey(arrStr[i]) && (arrStr[i].length() >= 1)) {
-                map.put(arrStr[i],(int)map.get(arrStr[i]) + 1);
+        for (int i = 0; i < arrStr.length; i++) {
+            if (map.containsKey(arrStr[i]) && (arrStr[i].length() >= 1)) {
+                map.put(arrStr[i], (int) map.get(arrStr[i]) + 1);
 
             }
         }
